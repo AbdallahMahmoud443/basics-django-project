@@ -1,0 +1,60 @@
+{% extends "./layout.html" %} {% block pageContent %}
+
+<div class="row mt-5">
+    <div class="col-6">
+
+        <div class="card mx-auto " style="width: 18rem;">
+            <img src="{{image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{user.username}}</h5>
+                <p class="card-text">
+                    <span>UserID: {{user.id}}</span>
+                    <br />
+                    <span>Email: {{user.email}}</span>
+                    <br />
+                    <span>phone: {{user.phone}}</span>
+                </p>
+            </div>
+            <div class="card-footer">
+                <form action="{% url 'showuserPage'%}" method="post"> <!--  showuserPage => name of route -->
+                    {% csrf_token %}
+                    <button class="btn btn-primary" type="submit" value="prevoius" name="btnPrevious">Previous</button>
+                    <button class="btn btn-primary" type="submit" value="next" name="btnNext">Next</button>
+
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="showAddress" onclick="toggleAll()">
+                        <label class="form-check-label" for="showAddress" id="lbshowhide">
+                            Show Address Details
+                        </label>
+                    </div>
+                    <input type="hidden" name="userID" value="{{user.id}}">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card" style="width: 18rem;display: none;" id="userDetails-{{user.id}}">
+
+            <div class="card-header">
+                Address
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> <span class="text-primary">City: {{user.address.city}}</span></li>
+                <li class="list-group-item"> <span class="text-primary">Street: {{user.address.street}}</span></li>
+                <li class="list-group-item"> <span class="text-primary">Zipcode: {{user.address.zipcode}}</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleAll() {
+        $("div[id*='userDetails-']").toggle();
+        if ($("#lbshowhide").text() == "Hide Address Details")
+            $("#lbshowhide").text("Show Address Details");
+        else
+            $("#lbshowhide").text("Hide Address Details");
+    }
+</script>
+
+{% endblock pageContent %}

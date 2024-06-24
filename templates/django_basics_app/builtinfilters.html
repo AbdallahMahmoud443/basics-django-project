@@ -1,0 +1,152 @@
+{% extends "./layout.html" %} {% block pageContent %}
+
+<div class="row mt-5">
+  <h2 class="text-center">Built-In Filters in Django Template</h2>
+
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>Add Filter #1</h3>
+    </div>
+    <div class="card-body">
+      <p>{{ProbationPeriod | add:2}}</p>
+      <p>{{FirstName | add:" " | add:LastName}}</p>
+      <p>{{2 | add:3}}</p>
+      <p>Adding String Lists : {{FirstQuater | add:SecondQuarter}}</p>
+      <p>Adding Integer Lists :{{FQuarter | add:SQuarter}}</p>
+    </div>
+  </div>
+
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>String Filters #2</h3>
+    </div>
+    <div class="card-body">
+      <p>{{AboutMe | addslashes}}</p>
+      <p>{{AboutMe | lower}}</p>
+      <p>{{AboutMe | upper}}</p>
+      <p>{{AboutMe | capfirst}}</p>
+      <p>{{AboutMe | title}}</p>
+      <p>{{AboutMe|length}}</p>
+      <p>{{ AboutMe|truncatechars:21 }}</p>
+      <p>{{ AboutMe|truncatewords:2 }}</p>
+      <p>{{ AboutMe|wordcount}}</p>
+    </div>
+  </div>
+
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>Date & Time Filters #3</h3>
+    </div>
+    <div class="card-body">
+      <p>{{now}}</p>
+      <h4>Get Day</h4>
+      <p>Day Of Month with leading zeroes : {{ now|date:"d"}}</p>
+      <p>Day of month without leading zeroes : {{ now|date:"j"}}</p>
+      <p>Day of Week : {{ now|date:"D"}}</p>
+      <p>Day of Week Full Text: {{ now|date:"l"}}</p>
+      <p>Day of Week : {{ now|date:"w"}}</p>
+      <p>Day of Year : {{ now|date:"z"}}</p>
+      <h4>Get Week</h4>
+      <p>Week Number of year : {{now |date:"W" }}</p>
+      <h4>Get Month</h4>
+      <p>Month Number with leading zeroes : {{ now|date:"m"}}</p>
+      <p>Month Number without leading zeroes : : {{ now|date:"n"}}</p>
+      <p>Month Name Upper : {{ now|date:"M"}}</p>
+      <p>Month Name Lower : {{ now|date:"b"}}</p>
+      <p>Month Name Full : {{ now|date:"F"}}</p>
+      <p>Month Name Abbreviation : {{ now|date:"N"}}</p>
+      <p>Number Of Days in a month : {{ now|date:"t"}}</p>
+      <h4>Get Year</h4>
+      <p>Year with Leading Zeroes : {{ now|date:"y"}}</p>
+      <p>Year Without Leading zeroes : {{ now|date:"Y"}}</p>
+      <p>Leap Year? : {{ now|date:"L"}}</p>
+      <h4>Get Hour</h4>
+      <p>12 Hour Format without Leading Zeroes : {{ now|date:"g"}}</p>
+      <p>24 Hour Format Without Leading zeroes : {{ now|date:"G"}}</p>
+      <p>12 Hour Format with Leading Zeroes: {{ now|date:"h"}}</p>
+      <p>24 Hour Format with Leading Zeroes: {{ now|date:"H"}}</p>
+      <h4>Get Minutes</h4>
+      <p>Minutes : {{ now|date:"i"}}</p>
+      <h4>Get Seconds & Micro Seconds</h4>
+      <p>Seconds : {{ now|date:"s"}}</p>
+      <p>Micro Seconds : {{ now|date:"u"}}</p>
+      <h4>Get AM or PM</h4>
+      <p>a.m or p.m : {{ now|date:"a"}}</p>
+      <p>AM OR PM : {{ now|date:"A"}}</p>
+      <p>Time in 12 Hour format : {{ now|date:"f"}}</p>
+      <p>Time in 12 Hour format with am or pm : {{ now|date:"P"}}</p>
+      <h4>Get Multiple Specifiers</h4>
+      <p>Using Multiple Specifiers {{ now|date:"D d M Y" }}</p>
+      <p>Time : {{now|time:'H:i:s:u'}}</p>
+    </div>
+  </div>
+
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>Sorting Dictionaries Filters #4</h3>
+    </div>
+    <div class="card-body">
+      <h4>dictsort</h4>
+      <p>Ascending Sorting Dictionary : {{Processors|dictsort:"cores"}}</p>
+      <ul>
+        {% for processor in Processors|dictsort:"cores" %}
+        <li>{{processor.name}},cores:({{processor.cores}})</li>
+        {% endfor %}
+      </ul>
+      <p>
+        Reverse Sorting Dictionary : {{ Processors|dictsortreversed:"cores" }}
+      </p>
+      <ul>
+        {% for Processor in Processors|dictsortreversed:"cores" %}
+        <li>{{ Processor.name }} ({{ Processor.cores }})</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>Miscellaneous Filters #5</h3>
+    </div>
+    <div class="card-body">
+      <p>File Size : {{PayForFight|filesizeformat}}</p>
+      <p>Text :{{Message}}</p>
+      <p>{{Message|safe}}</p>
+      <p>{{Message|force_escape}}</p>
+      {% autoescape off %}
+      <!-- django bydefualt set autoescape as on -->
+      <p>Text :{{Message}}</p>
+      {% endautoescape %}
+      <p>PreviousFight : {{PreviousFight|default:"Not Available"}}</p>
+      <p>Next Fight : {{NextFight|default_if_none:"Not Available"}}</p>
+      <p>{{Processors|first}}</p>
+      <p>{{Processors|last}}</p>
+    </div>
+  </div>
+
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>Numerical Filters #6</h3>
+    </div>
+    <div class="card-body">
+      <p>{{PayForFight | floatformat:'3'}}</p>
+      <p>{{PayForFight | floatformat:'3g'}}</p>
+      <p>{{PayForFight|divisibleby:"3" }}</p>
+      <p>{{PayForFight|get_digit:"4" }}</p>
+    </div>
+  </div>
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>Cut,Join,Slice Filters #7</h3>
+    </div>
+    <div class="card-body">
+      <p>Cut : {{AboutMe | cut:" "}}</p>
+      <p>{{ Processors|join:"-" }}</p>
+      <p>{{ Processors|slice:":2" }}</p>
+      <p>{{Processors|length}}</p>
+      <p>{{FirstName|make_list}}</p>
+      <p>{{Processors|random}}</p>
+    </div>
+  </div>
+</div>
+{% endblock pageContent %} Lecture thumbnail Lecture thumbnail

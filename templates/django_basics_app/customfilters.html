@@ -1,0 +1,22 @@
+{% extends "./layout.html" %} {% load customfilters %} 
+{% block pageContent %}
+
+<div class="row mt-5">
+  <h2 class="text-center">Custom Filters</h2>
+  <div class="card p-0 mb-2">
+    <div class="card-header">
+      <h3>Custom Filters</h3>
+    </div>
+    <div class="card-body">
+      <ul>
+        <li>Course Description :{{Description|firstfiveupper}}</li>
+        <li>Course Description :{{Description|firstfiveupper | lower}}</li>
+        <li>Course Description :{{Description|firstnupper:10}}</li>
+        <li>Course Description :{{Description|lengthlimit:20}}</li>
+        <li>InDemand:{{InDemand|addrating}}</li>
+        <li>PollNumber : {{PollNumber}} i.e. ({{PollNumber|numtotext}})</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock pageContent %}

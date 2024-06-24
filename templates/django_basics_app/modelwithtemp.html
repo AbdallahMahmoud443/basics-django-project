@@ -1,0 +1,32 @@
+{% extends "./layout.html" %} 
+
+{% block pageContent %}
+
+<div class="row mt-5">
+    <ul>
+        <li>{{author.AuthorName}}</li>
+        <li>{{author.Country}}</li>
+        <li>{{author.BookName}}</li>
+    </ul>
+</div>
+<div class="row">
+    <table class="table">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Author Name</th>
+            <th scope="col">Country</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Pass data =>(with)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for author in authors%}
+                {% include "./_showAuthorDataPartialview.html" with me="Abdallah Mahmoud"%} <!-- Partial view (repeated part in website can make it partial view) not fixed part -->
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+
+{% endblock pageContent %}

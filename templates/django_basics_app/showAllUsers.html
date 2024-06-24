@@ -1,0 +1,43 @@
+{% extends "./layout.html" %} {% block pageContent %}
+<h1 class="text-center mb-2">All Users In Website</h1>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User ID</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">City</th>
+      <th scope="col">Street</th>
+      <th scope="col">Street Number</th>
+      <th scope="col">Zip Code</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users%}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <!-- Get Get Index-->
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.name.firstname}}</td>
+      <td>{{user.name.lastname}}</td>
+      <td>{{user.address.city}}</td>
+      <td>{{user.address.street}}</td>
+      <td>{{user.address.number}}</td>
+      <td>{{user.address.zipcode}}</td>
+      <td>{{user.address.geolocation.lat}}</td>
+      <td>{{user.address.geolocation.long}}</td>
+      <td>{{user.phone}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock pageContent %}

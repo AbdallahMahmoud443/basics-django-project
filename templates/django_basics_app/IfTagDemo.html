@@ -1,0 +1,139 @@
+{% extends "./layout.html" %} 
+{% block pageContent %}
+    {% if user.IslogedIn is True%}
+    <div class="card my-2">
+        <div class="card-body">
+            {{user.UserName}} is online Now ✔
+        </div>
+    </div>
+    {% else %}
+    <div class="card my-2">
+        <div class="card-body">
+            Now Your Are Guest 😢
+        </div>
+    </div>
+    
+    {% endif %} 
+    
+    {% if user.IslogedIn %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is online Now ✔
+        </div>
+    </div>
+    {% else %}
+    <div class="card  my-2">
+        <div class="card-body">
+            Now Your Are Guest 😢
+        </div>
+    </div>
+    {% endif %} 
+    
+
+    {% if user.Role == "Admin" %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is {{user.Role}} ✔
+        </div>
+    </div>
+    {% else %}
+    <div class="card  my-2">
+        <div class="card-body">
+            Now Your Are User 😢
+        </div>
+    </div>
+    {% endif %} 
+    
+    {% if user.JobTitle != "Django Developer"%}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is out off Community ✔
+        </div>
+    </div>
+    {% else %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is inside Community becauese he known Django ✔
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if "Reactjs" in user.Skills%}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is Fullstack Developer 😊
+        </div>
+    </div>
+    {% else %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is back-end only 💎
+        </div>
+    </div>
+    {% endif %}
+
+    {% if "Reactjs" in user.Skills %} 
+     {% if user.WorkExperience > 6%}
+    <!-- Nested-if  better than -->
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is Super Fullstack Developer 😊🐱‍👤
+        </div>
+    </div>
+    {% else %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is Super Fullstack Developer 😊🕶
+        </div>
+    </div>
+    {% endif %} 
+    {% else %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is back-end only 💎
+        </div>
+    </div>
+    {% endif %}
+
+    {% if "Reactjs" in user.Skills and user.WorkExperience > 6 %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is Super Fullstack Developer 😊🐱‍👤
+        </div>
+    </div>
+    {% else %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is back-end only 💎
+        </div>
+    </div>
+    {% endif %}
+
+    {% if user.StatusCode is not None %}
+    <div class="card  my-2">
+        <div class="card-body">
+            {{user.UserName}} is not have StatusCode
+        </div>
+    </div>
+    {% endif %}
+
+    {% if user.WorkExperience >= 5 %}
+    <div class="card  my-2">
+        <div class="card-body"> He is Senior 🐱‍🏍</div>
+    </div>
+
+    {% elif user.WorkExperience >= 2 and user.WorkExperience <= 4%}
+    <div class="card  my-2">
+        <div class="card-body"> He is mid-Senior 😎</div>
+    </div>
+    {% elif user.WorkExperience == 1%}
+    <div class="card  my-2">
+        <div class="card-body"> He is jonior 👨‍🦱</div>
+    </div>
+    {% else %}
+    <div class="card my-2">
+        <div class="card-body"> He is ⚰</div>
+    </div>
+    {%endif%}
+    
+    {% endblock pageContent %}

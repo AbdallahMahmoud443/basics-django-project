@@ -1,0 +1,27 @@
+{% extends "./layout.html" %}
+{% block pageContent %}
+<h1 class="text-center">Server Time : {{today}}</h1>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th>Day</th>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Hours</th>
+      <th>Minutes</th>
+      <th>Seconds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{today | date:"d"}}</td>
+      <td>{{today | date:"m"}}</td>
+      <td>{{today | date:"Y"}}</td>
+      <td>{{today | date:"H"}}</td>
+      <td>{{today | date:"i"}}</td>
+      <td>{{today | date:"s"}}</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock pageContent %}

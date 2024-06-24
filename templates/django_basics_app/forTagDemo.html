@@ -1,0 +1,134 @@
+{% extends "./layout.html" %} {% block pageContent %}
+
+<div class="container mt-4">
+  <h2 class="my-2 text-center">Total Number of Products ={{ProductsCount}}</h2>
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <td>productID</td>
+        <td>productName</td>
+        <td>quantity</td>
+        <td>unitsInStock</td>
+        <td>disContinued</td>
+        <td>cost</td>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{product.productID}}</td>
+        <td>{{product.productName}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.unitsInStock}}</td>
+        <td>{{product.disContinued}}</td>
+        <td>{{product.cost}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <ul class="mt-2">
+    {% for product in products%}
+    <li>{{product.productName}}</li>
+    {% endfor %}
+  </ul>
+  <ol class="mt-2">
+    {% for product in products%}
+    <li>{{product.productName}}</li>
+    {% endfor %}
+  </ol>
+  {% for product in products%}
+  <div class="form-check mt-2">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="{{product.productName}}"
+      id="{{product.productID}}"
+    />
+    <label class="form-check-label" for="{{product.productID}}">
+      {{product.productName}}
+    </label>
+  </div>
+  {% endfor %} {% for product in products%}
+  <div class="form-check mt-2">
+    <input
+      class="form-check-input"
+      type="radio"
+      value="{{product.productName}}"
+      id="{{product.productID}}"
+      name="productName"
+    />
+    <label class="form-check-label" for="{{product.productID}}">
+      {{product.productName}}
+    </label>
+  </div>
+  {% endfor %}
+  <select
+    class="form-select my-2 w-25"
+    aria-label="Default select example"
+    name="productName"
+  >
+    {% for product in products%}
+    <option value="{{product.productName}}">{{product.productName}}</option>
+    {% endfor %}
+  </select>
+
+  <div class="mb-3 w-25">
+    <label for="{{products.1.productID}}" class="form-label">productID</label>
+    <input type="text" class="form-control" value="{{products.1.productID}}" />
+  </div>
+  <div class="mb-3 w-25">
+    <label for="{{products.1.productName}}" class="form-label"
+      >productName</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      value="{{products.1.productName}}"
+    />
+  </div>
+  <div class="mb-3 w-25">
+    <label for="{{products.1.quantity}}" class="form-label"
+      >productQuantity</label
+    >
+    <input type="text" class="form-control" value="{{products.1.quantity}}" />
+  </div>
+  <div class="mb-3 w-25">
+    <label for="{{products.1.unitsInStock}}" class="form-label"
+      >unitsInStock</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      value="{{products.1.unitsInStock}}"
+    />
+  </div>
+  <div class="mb-3 w-25">
+    <label for="{{products.1.disContinued}}" class="form-label"
+      >disContinued</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      value="{{products.1.disContinued}}"
+    />
+  </div>
+  <div class="mb-3 w-25">
+    <label for="{{products.1.cost}}" class="form-label">cost</label>
+    <input
+      type="text"
+      class="form-control"
+      id="{{products.1.cost}}"
+      value="{{products.1.cost}}"
+    />
+  </div>
+  <select class="form-select mt-2 w-25">
+    {% for Processor in Processors%}
+    <optgroup label="  {{Processor.Category}}">
+      {% for p in Processor.processors%}
+      <option value="{{p}}">{{p}}</option>
+      {% endfor %}
+    </optgroup>
+    {% endfor %}
+  </select>
+</div>
+{% endblock pageContent %}

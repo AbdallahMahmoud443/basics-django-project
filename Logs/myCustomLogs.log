@@ -1,0 +1,15 @@
+2024-06-19 23:10:13,922-views.py-ShowLoggingsMessages-DEBUG-Debug Message #1 dateTime: 2024-06-19 23:10:13.922114
+2024-06-19 23:10:13,922-views.py-ShowLoggingsMessages-INFO-Info messages #2
+2024-06-19 23:10:13,922-views.py-ShowLoggingsMessages-WARNING-Warning Message #3
+2024-06-19 23:10:13,922-views.py-ShowLoggingsMessages-ERROR-Error Message #4
+2024-06-19 23:10:13,922-views.py-ShowLoggingsMessages-CRITICAL-critical Message #5
+2024-06-19 23:12:52,789-views.py-ShowLoggingsMessages-DEBUG-Debug Message #1 dateTime: 2024-06-19 23:12:52.789090
+2024-06-19 23:12:52,789-views.py-ShowLoggingsMessages-INFO-Info messages #2
+2024-06-19 23:12:52,789-views.py-ShowLoggingsMessages-WARNING-Warning Message #3
+2024-06-19 23:12:52,789-views.py-ShowLoggingsMessages-ERROR-Error Message #4
+2024-06-19 23:12:52,810-views.py-ShowLoggingsMessages-CRITICAL-critical Message #5
+2024-06-23 01:00:17,004-views.py-ShowLoggingsMessages-DEBUG-Debug Message #1 dateTime: 2024-06-23 01:00:17.004974
+2024-06-23 01:00:17,011-views.py-ShowLoggingsMessages-INFO-Info messages #2
+2024-06-23 01:00:17,011-views.py-ShowLoggingsMessages-WARNING-Warning Message #3
+2024-06-23 01:00:17,011-views.py-ShowLoggingsMessages-ERROR-Error Message #4
+2024-06-23 01:00:17,011-views.py-ShowLoggingsMessages-CRITICAL-critical Message #5
